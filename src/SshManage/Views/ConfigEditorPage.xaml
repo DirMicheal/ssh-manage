@@ -1,0 +1,68 @@
+<Page x:Class="SshManage.Views.ConfigEditorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:helpers="clr-namespace:SshManage.Helpers"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="配置编辑">
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" helpers:StackPanelHelper.Spacing="12">
+            <TextBlock Text="配置文件编辑" FontSize="20" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center" />
+            <TextBlock Text="直接编辑SSH配置文件源码" FontSize="14" Foreground="{StaticResource TextSecondaryBrush}" VerticalAlignment="Center" />
+        </StackPanel>
+
+        <Border Grid.Row="1" Style="{StaticResource CardStyle}" Margin="0,16,0,16">
+            <StackPanel Orientation="Horizontal" helpers:StackPanelHelper.Spacing="12">
+                <Button x:Name="BtnLoad" Content="📂 加载配置" Style="{StaticResource PrimaryButtonStyle}" Click="BtnLoad_Click" />
+                <Button x:Name="BtnSave" Content="💾 保存配置" Style="{StaticResource PrimaryButtonStyle}" Click="BtnSave_Click" />
+                <Button x:Name="BtnBackup" Content="💿 创建备份" Style="{StaticResource SecondaryButtonStyle}" Click="BtnBackup_Click" />
+                <Button x:Name="BtnRevert" Content="↩️ 撤销修改" Style="{StaticResource SecondaryButtonStyle}" Click="BtnRevert_Click" />
+                <Button x:Name="BtnFormat" Content="✨ 格式化" Style="{StaticResource SecondaryButtonStyle}" Click="BtnFormat_Click" />
+                <Button x:Name="BtnOpenFolder" Content="📁 打开目录" Style="{StaticResource SecondaryButtonStyle}" Click="BtnOpenFolder_Click" />
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="2" Style="{StaticResource CardStyle}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <DockPanel Grid.Row="0" Margin="0,0,0,8">
+                    <TextBlock Text="📝 config 文件内容" FontWeight="SemiBold" FontSize="14" VerticalAlignment="Center" />
+                    <TextBlock x:Name="FilePathTextBlock" Text="" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                </DockPanel>
+                <TextBox x:Name="ConfigTextBox"
+                         Grid.Row="1"
+                         FontFamily="Consolas"
+                         FontSize="13"
+                         TextWrapping="NoWrap"
+                         AcceptsReturn="True"
+                         AcceptsTab="True"
+                         VerticalScrollBarVisibility="Auto"
+                         HorizontalScrollBarVisibility="Auto"
+                         TextChanged="ConfigTextBox_TextChanged" />
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="3" Style="{StaticResource CardStyle}" Margin="0,16,0,0">
+            <StackPanel helpers:StackPanelHelper.Spacing="4">
+                <TextBlock x:Name="StatusTextBlock" Text="就绪" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}" />
+                <TextBlock x:Name="HintTextBlock" 
+                           Text="提示：直接编辑配置文件可能导致格式错误，建议使用站点管理功能进行可视化编辑。修改前请先备份。" 
+                           FontSize="11" 
+                           Foreground="{StaticResource WarningBrush}"
+                           TextWrapping="Wrap" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

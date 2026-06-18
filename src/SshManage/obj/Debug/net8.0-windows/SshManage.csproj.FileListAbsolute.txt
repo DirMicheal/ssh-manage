@@ -1,0 +1,15 @@
+d:\solo\ssh-manage\src\SshManage\obj\Debug\net8.0-windows\SshManage.csproj.AssemblyReference.cache
+d:\solo\ssh-manage\src\SshManage\obj\Debug\net8.0-windows\Styles\Colors.baml
+d:\solo\ssh-manage\src\SshManage\obj\Debug\net8.0-windows\Styles\Controls.baml
+d:\solo\ssh-manage\src\SshManage\obj\Debug\net8.0-windows\MainWindow.g.cs
+d:\solo\ssh-manage\src\SshManage\obj\Debug\net8.0-windows\Views\ConfigEditorPage.g.cs
+d:\solo\ssh-manage\src\SshManage\obj\Debug\net8.0-windows\Views\ConnectionTestPage.g.cs
+d:\solo\ssh-manage\src\SshManage\obj\Debug\net8.0-windows\Views\GenerateKeyDialog.g.cs
+d:\solo\ssh-manage\src\SshManage\obj\Debug\net8.0-windows\Views\KeyManagePage.g.cs
+d:\solo\ssh-manage\src\SshManage\obj\Debug\net8.0-windows\Views\PermissionFixPage.g.cs
+d:\solo\ssh-manage\src\SshManage\obj\Debug\net8.0-windows\Views\SiteEditDialog.g.cs
+d:\solo\ssh-manage\src\SshManage\obj\Debug\net8.0-windows\Views\SiteManagePage.g.cs
+d:\solo\ssh-manage\src\SshManage\obj\Debug\net8.0-windows\App.g.cs
+d:\solo\ssh-manage\src\SshManage\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+d:\solo\ssh-manage\src\SshManage\obj\Debug\net8.0-windows\SshManage_MarkupCompile.cache
+d:\solo\ssh-manage\src\SshManage\obj\Debug\net8.0-windows\SshManage_MarkupCompile.lref
