@@ -70,7 +70,7 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="路径" DisplayMemberBinding="{Binding PrivateKeyPath}" Width="*" />
+                            <GridViewColumn Header="路径" DisplayMemberBinding="{Binding PrivateKeyPath}" Width="300" />
                         </GridView>
                     </ListView.View>
                 </ListView>

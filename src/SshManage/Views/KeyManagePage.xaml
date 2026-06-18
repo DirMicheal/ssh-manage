@@ -61,7 +61,7 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
                             <GridViewColumn Header="权限状态" DisplayMemberBinding="{Binding PermissionStatus}" Width="100" />
-                            <GridViewColumn Header="私钥路径" DisplayMemberBinding="{Binding PrivateKeyPath}" Width="*" />
+                            <GridViewColumn Header="私钥路径" DisplayMemberBinding="{Binding PrivateKeyPath}" Width="300" />
                         </GridView>
                     </ListView.View>
                 </ListView>

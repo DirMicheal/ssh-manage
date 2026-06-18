@@ -72,7 +72,7 @@
                                 <GridViewColumn Header="端口" DisplayMemberBinding="{Binding Port}" Width="60" />
                                 <GridViewColumn Header="用户" DisplayMemberBinding="{Binding User}" Width="100" />
                                 <GridViewColumn Header="分组" DisplayMemberBinding="{Binding GroupName}" Width="100" />
-                                <GridViewColumn Header="备注" DisplayMemberBinding="{Binding Remark}" Width="*" />
+                                <GridViewColumn Header="备注" DisplayMemberBinding="{Binding Remark}" Width="200" />
                             </GridView>
                         </ListView.View>
                     </ListView>

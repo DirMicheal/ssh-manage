@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Windows SSH配置管理器 - 可视化管理SSH站点与私钥")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9a539d2d33ee05eaf0eb69ef7807dbd21eb56d1e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+44c13cee2b631b89f8324f45967b59bc16ba73d4")]
 [assembly: System.Reflection.AssemblyProductAttribute("SSH配置管理器")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SshManage")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

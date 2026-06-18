@@ -61,7 +61,7 @@
                             <GridViewColumn Header="地址" DisplayMemberBinding="{Binding HostName}" Width="150" />
                             <GridViewColumn Header="端口" DisplayMemberBinding="{Binding Port}" Width="60" />
                             <GridViewColumn Header="用户" DisplayMemberBinding="{Binding User}" Width="100" />
-                            <GridViewColumn Header="检测结果" Width="*">
+                            <GridViewColumn Header="检测结果" Width="300">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Remark}" TextTrimming="CharacterEllipsis" />
