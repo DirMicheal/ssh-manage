@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\solo\\ssh-manage\\src\\SshManage\\SshManage.csproj": {}
+    "D:\\solo\\ssh-manage\\src\\SshManage\\SshManage.csproj": {}
   },
   "projects": {
-    "d:\\solo\\ssh-manage\\src\\SshManage\\SshManage.csproj": {
+    "D:\\solo\\ssh-manage\\src\\SshManage\\SshManage.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\solo\\ssh-manage\\src\\SshManage\\SshManage.csproj",
+        "projectUniqueName": "D:\\solo\\ssh-manage\\src\\SshManage\\SshManage.csproj",
         "projectName": "SshManage",
-        "projectPath": "d:\\solo\\ssh-manage\\src\\SshManage\\SshManage.csproj",
+        "projectPath": "D:\\solo\\ssh-manage\\src\\SshManage\\SshManage.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "d:\\solo\\ssh-manage\\src\\SshManage\\obj\\",
+        "outputPath": "D:\\solo\\ssh-manage\\src\\SshManage\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -88,6 +88,9 @@ public partial class SiteEditDialog : Window
         Site.GroupName = string.IsNullOrWhiteSpace(GroupTextBox.Text) ? null : GroupTextBox.Text.Trim();
         Site.Remark = string.IsNullOrWhiteSpace(RemarkTextBox.Text) ? null : RemarkTextBox.Text.Trim();
 
+        var action = _isEdit ? "编辑" : "新增";
+        Title = $"{action}站点 - {Site.Host}";
+
         DialogResult = true;
         Close();
     }

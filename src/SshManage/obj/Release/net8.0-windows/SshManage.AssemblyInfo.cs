@@ -11,10 +11,10 @@ using System;
 using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("SshManage Team")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Windows SSH配置管理器 - 可视化管理SSH站点与私钥")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9a539d2d33ee05eaf0eb69ef7807dbd21eb56d1e")]
 [assembly: System.Reflection.AssemblyProductAttribute("SSH配置管理器")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SshManage")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

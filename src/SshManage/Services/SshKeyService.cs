@@ -160,7 +160,7 @@ public class SshKeyService
                 {
                     if (identity is SecurityIdentifier sid)
                     {
-                        if (sid.IsEqualSid(adminSid) || sid.IsEqualSid(systemSid))
+                        if (sid.Equals(adminSid) || sid.Equals(systemSid))
                             continue;
                     }
                 }
@@ -204,7 +204,7 @@ public class SshKeyService
 
             var currentUser = WindowsIdentity.GetCurrent().Name;
 
-            fileSecurity.SetOwner(NTAccount.FromName(currentUser));
+            fileSecurity.SetOwner(new NTAccount(currentUser));
 
             fileSecurity.AddAccessRule(new FileSystemAccessRule(
                 currentUser,
