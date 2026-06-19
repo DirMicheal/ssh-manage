@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:helpers="clr-namespace:SshManage.Helpers"
         Title="编辑站点" 
-        Height="520" 
-        Width="500"
+        Height="650" 
+        Width="550"
         WindowStartupLocation="CenterOwner"
         ResizeMode="NoResize"
         Background="{StaticResource BackgroundBrush}">
@@ -25,6 +25,7 @@
                             <TextBlock Text="主机名 (Host)" Width="120" VerticalAlignment="Center" Foreground="{StaticResource TextSecondaryBrush}" />
                             <TextBox x:Name="HostTextBox" />
                         </DockPanel>
+                        <TextBlock x:Name="HostWarningText" Text="" FontSize="11" Foreground="{StaticResource ErrorBrush}" Margin="120,0,0,0" Visibility="Collapsed" />
                         <DockPanel>
                             <TextBlock Text="服务器地址" Width="120" VerticalAlignment="Center" Foreground="{StaticResource TextSecondaryBrush}" />
                             <TextBox x:Name="HostNameTextBox" />
@@ -49,10 +50,34 @@
                                 <TextBox x:Name="IdentityFileTextBox" />
                             </DockPanel>
                         </DockPanel>
+                        <CheckBox x:Name="ForwardAgentCheckBox" Content="启用 SSH Agent 转发 (ForwardAgent)" Margin="120,0,0,0" />
                     </StackPanel>
                 </GroupBox>
 
-                <GroupBox Header="其他设置" Padding="12">
+                <GroupBox Header="代理设置" Padding="12">
+                    <StackPanel helpers:StackPanelHelper.Spacing="10">
+                        <DockPanel>
+                            <TextBlock Text="ProxyCommand" Width="120" VerticalAlignment="Center" Foreground="{StaticResource TextSecondaryBrush}" />
+                            <TextBox x:Name="ProxyCommandTextBox" />
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Text="ProxyJump" Width="120" VerticalAlignment="Center" Foreground="{StaticResource TextSecondaryBrush}" />
+                            <TextBox x:Name="ProxyJumpTextBox" />
+                        </DockPanel>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Header="连接设置" Padding="12">
+                    <StackPanel helpers:StackPanelHelper.Spacing="10">
+                        <DockPanel>
+                            <TextBlock Text="心跳间隔(秒)" Width="120" VerticalAlignment="Center" Foreground="{StaticResource TextSecondaryBrush}" />
+                            <TextBox x:Name="ServerAliveIntervalTextBox" Text="0" Width="100" HorizontalAlignment="Left" />
+                        </DockPanel>
+                        <CheckBox x:Name="CompressionCheckBox" Content="启用压缩 (Compression)" Margin="120,0,0,0" />
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Header="备注与分组" Padding="12">
                     <StackPanel helpers:StackPanelHelper.Spacing="10">
                         <DockPanel>
                             <TextBlock Text="分组" Width="120" VerticalAlignment="Center" Foreground="{StaticResource TextSecondaryBrush}" />

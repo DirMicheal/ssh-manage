@@ -29,9 +29,25 @@ public partial class SshKey : ObservableObject
     [ObservableProperty]
     private string? _permissionStatus;
 
+    [ObservableProperty]
+    private bool _isMichealKey;
+
+    [ObservableProperty]
+    private string? _fingerprint;
+
     public string PublicKeyContent { get; set; } = string.Empty;
 
     public bool HasPublicKey => File.Exists(PublicKeyPath);
 
     public bool HasPrivateKey => File.Exists(PrivateKeyPath);
+
+    public string StatusIcon
+    {
+        get
+        {
+            if (IsMichealKey) return "⭐";
+            if (HasPermissionIssue) return "⚠️";
+            return "✅";
+        }
+    }
 }

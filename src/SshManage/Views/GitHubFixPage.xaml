@@ -1,0 +1,117 @@
+<Page x:Class="SshManage.Views.GitHubFixPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:helpers="clr-namespace:SshManage.Helpers"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="800"
+      Title="GitHub一键配置修复">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal" helpers:StackPanelHelper.Spacing="12">
+                <TextBlock Text="GitHub一键配置修复" FontSize="20" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center" />
+                <TextBlock Text="诊断并修复GitHub SSH连接配置，支持Micheal私钥专属识别" FontSize="14" Foreground="{StaticResource TextSecondaryBrush}" VerticalAlignment="Center" />
+            </StackPanel>
+
+            <Border Grid.Row="1" Style="{StaticResource CardStyle}" Margin="0,16,0,0">
+                <StackPanel helpers:StackPanelHelper.Spacing="12">
+                    <StackPanel Orientation="Horizontal" helpers:StackPanelHelper.Spacing="12">
+                        <Button x:Name="BtnDiagnose" Content="🔍 诊断" Style="{StaticResource PrimaryButtonStyle}" Click="BtnDiagnose_Click" />
+                        <Button x:Name="BtnFixAll" Content="🔧 一键修复" Style="{StaticResource SecondaryButtonStyle}" Click="BtnFixAll_Click" />
+                        <Button x:Name="BtnTestConnection" Content="🌐 测试连接" Style="{StaticResource SecondaryButtonStyle}" Click="BtnTestConnection_Click" />
+                        <Button x:Name="BtnRefresh" Content="🔄 刷新" Style="{StaticResource SecondaryButtonStyle}" Click="BtnRefresh_Click" />
+                    </StackPanel>
+                    <TextBlock x:Name="StatusTextBlock" Text="点击诊断按钮检测GitHub SSH配置" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}" />
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Row="2" Style="{StaticResource CardStyle}" Margin="0,16,0,0">
+                <StackPanel helpers:StackPanelHelper.Spacing="8">
+                    <TextBlock Text="📋 诊断结果" FontWeight="SemiBold" FontSize="14" />
+                    <StackPanel x:Name="DiagnosticPanel" helpers:StackPanelHelper.Spacing="6">
+                        <StackPanel x:Name="CheckSshAvailable" Orientation="Horizontal" helpers:StackPanelHelper.Spacing="8">
+                            <TextBlock x:Name="IconSshAvailable" Text="⏳" FontSize="14" VerticalAlignment="Center" />
+                            <TextBlock Text="SSH 可用" FontSize="13" VerticalAlignment="Center" Foreground="{StaticResource TextPrimaryBrush}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" helpers:StackPanelHelper.Spacing="8">
+                            <TextBlock x:Name="IconGitAvailable" Text="⏳" FontSize="14" VerticalAlignment="Center" />
+                            <TextBlock Text="Git 可用" FontSize="13" VerticalAlignment="Center" Foreground="{StaticResource TextPrimaryBrush}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" helpers:StackPanelHelper.Spacing="8">
+                            <TextBlock x:Name="IconSshAgentRunning" Text="⏳" FontSize="14" VerticalAlignment="Center" />
+                            <TextBlock Text="SSH Agent 运行中" FontSize="13" VerticalAlignment="Center" Foreground="{StaticResource TextPrimaryBrush}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" helpers:StackPanelHelper.Spacing="8">
+                            <TextBlock x:Name="IconHasAnyKey" Text="⏳" FontSize="14" VerticalAlignment="Center" />
+                            <TextBlock Text="存在 SSH 密钥" FontSize="13" VerticalAlignment="Center" Foreground="{StaticResource TextPrimaryBrush}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" helpers:StackPanelHelper.Spacing="8">
+                            <TextBlock x:Name="IconHasMichealKey" Text="⏳" FontSize="14" VerticalAlignment="Center" />
+                            <TextBlock Text="Micheal 密钥已识别" FontSize="13" VerticalAlignment="Center" Foreground="{StaticResource TextPrimaryBrush}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" helpers:StackPanelHelper.Spacing="8">
+                            <TextBlock x:Name="IconHasGitHubConfig" Text="⏳" FontSize="14" VerticalAlignment="Center" />
+                            <TextBlock Text="GitHub 配置已找到" FontSize="13" VerticalAlignment="Center" Foreground="{StaticResource TextPrimaryBrush}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" helpers:StackPanelHelper.Spacing="8">
+                            <TextBlock x:Name="IconKnownHostsConfigured" Text="⏳" FontSize="14" VerticalAlignment="Center" />
+                            <TextBlock Text="Known Hosts 已配置" FontSize="13" VerticalAlignment="Center" Foreground="{StaticResource TextPrimaryBrush}" />
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Row="3" Style="{StaticResource CardStyle}" Margin="0,16,0,0">
+                <StackPanel helpers:StackPanelHelper.Spacing="8">
+                    <StackPanel Orientation="Horizontal" helpers:StackPanelHelper.Spacing="8">
+                        <TextBlock Text="⚠️ 问题列表" FontWeight="SemiBold" FontSize="14" VerticalAlignment="Center" />
+                        <TextBlock x:Name="IssueCountTextBlock" Text="" FontSize="12" Foreground="{StaticResource ErrorBrush}" VerticalAlignment="Center" />
+                    </StackPanel>
+                    <ListView x:Name="IssuesListView" BorderThickness="0" Background="Transparent" MaxHeight="150">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="问题描述" DisplayMemberBinding="{Binding}" Width="600" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Row="4" Style="{StaticResource CardStyle}" Margin="0,16,0,0">
+                <StackPanel helpers:StackPanelHelper.Spacing="8">
+                    <TextBlock Text="🔗 GitHub 站点配置" FontWeight="SemiBold" FontSize="14" />
+                    <ListView x:Name="GitHubSitesListView" BorderThickness="0" Background="Transparent" MaxHeight="180">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Host" DisplayMemberBinding="{Binding Host}" Width="150" />
+                                <GridViewColumn Header="HostName" DisplayMemberBinding="{Binding HostName}" Width="150" />
+                                <GridViewColumn Header="User" DisplayMemberBinding="{Binding User}" Width="80" />
+                                <GridViewColumn Header="IdentityFile" DisplayMemberBinding="{Binding IdentityFile}" Width="250" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Row="5" Style="{StaticResource CardStyle}" Margin="0,16,0,0" x:Name="MichealKeyCard" Visibility="Collapsed">
+                <StackPanel helpers:StackPanelHelper.Spacing="8">
+                    <TextBlock Text="⭐ Micheal 密钥信息" FontWeight="SemiBold" FontSize="14" />
+                    <StackPanel x:Name="MichealKeyPanel" helpers:StackPanelHelper.Spacing="4" />
+                </StackPanel>
+            </Border>
+
+            <TextBlock Grid.Row="6" x:Name="BottomStatusTextBlock" Text="" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,8,0,0" />
+        </Grid>
+    </ScrollViewer>
+</Page>

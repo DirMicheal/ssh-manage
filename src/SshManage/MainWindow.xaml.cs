@@ -8,8 +8,13 @@ public partial class MainWindow : Window
 {
     private readonly SiteManagePage _siteManagePage = new();
     private readonly KeyManagePage _keyManagePage = new();
+    private readonly AgentManagePage _agentManagePage = new();
     private readonly PermissionFixPage _permissionFixPage = new();
     private readonly ConnectionTestPage _connectionTestPage = new();
+    private readonly TemplateManagePage _templateManagePage = new();
+    private readonly BackupManagePage _backupManagePage = new();
+    private readonly MigrationPage _migrationPage = new();
+    private readonly GitHubFixPage _gitHubFixPage = new();
     private readonly ConfigEditorPage _configEditorPage = new();
 
     public MainWindow()
@@ -36,8 +41,13 @@ public partial class MainWindow : Window
         {
             "SiteManage" => _siteManagePage,
             "KeyManage" => _keyManagePage,
+            "AgentManage" => _agentManagePage,
             "PermissionFix" => _permissionFixPage,
             "ConnectionTest" => _connectionTestPage,
+            "TemplateManage" => _templateManagePage,
+            "BackupManage" => _backupManagePage,
+            "Migration" => _migrationPage,
+            "GitHubFix" => _gitHubFixPage,
             "ConfigEditor" => _configEditorPage,
             _ => null
         };

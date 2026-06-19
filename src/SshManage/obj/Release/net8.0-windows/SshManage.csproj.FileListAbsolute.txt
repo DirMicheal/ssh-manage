@@ -40,3 +40,13 @@ D:\solo\ssh-manage\src\SshManage\obj\Release\net8.0-windows\refint\SshManage.dll
 D:\solo\ssh-manage\src\SshManage\obj\Release\net8.0-windows\SshManage.pdb
 D:\solo\ssh-manage\src\SshManage\obj\Release\net8.0-windows\SshManage.genruntimeconfig.cache
 D:\solo\ssh-manage\src\SshManage\obj\Release\net8.0-windows\ref\SshManage.dll
+d:\solo\ssh-manage\src\SshManage\obj\Release\net8.0-windows\Views\AgentManagePage.g.cs
+d:\solo\ssh-manage\src\SshManage\obj\Release\net8.0-windows\Views\BackupManagePage.g.cs
+d:\solo\ssh-manage\src\SshManage\obj\Release\net8.0-windows\Views\GitHubFixPage.g.cs
+d:\solo\ssh-manage\src\SshManage\obj\Release\net8.0-windows\Views\MigrationPage.g.cs
+d:\solo\ssh-manage\src\SshManage\obj\Release\net8.0-windows\Views\TemplateManagePage.g.cs
+d:\solo\ssh-manage\src\SshManage\obj\Release\net8.0-windows\Views\AgentManagePage.baml
+d:\solo\ssh-manage\src\SshManage\obj\Release\net8.0-windows\Views\BackupManagePage.baml
+d:\solo\ssh-manage\src\SshManage\obj\Release\net8.0-windows\Views\GitHubFixPage.baml
+d:\solo\ssh-manage\src\SshManage\obj\Release\net8.0-windows\Views\MigrationPage.baml
+d:\solo\ssh-manage\src\SshManage\obj\Release\net8.0-windows\Views\TemplateManagePage.baml

@@ -1,0 +1,16 @@
+﻿
+Fd:\solo\ssh-manage\src\SshManage\App.xaml;;
+FD:\solo\ssh-manage\src\SshManage\MainWindow.xaml;;
+FD:\solo\ssh-manage\src\SshManage\Views\AgentManagePage.xaml;;
+FD:\solo\ssh-manage\src\SshManage\Views\BackupManagePage.xaml;;
+FD:\solo\ssh-manage\src\SshManage\Views\ConfigEditorPage.xaml;;
+FD:\solo\ssh-manage\src\SshManage\Views\ConnectionTestPage.xaml;;
+FD:\solo\ssh-manage\src\SshManage\Views\GenerateKeyDialog.xaml;;
+FD:\solo\ssh-manage\src\SshManage\Views\GitHubFixPage.xaml;;
+FD:\solo\ssh-manage\src\SshManage\Views\KeyManagePage.xaml;;
+FD:\solo\ssh-manage\src\SshManage\Views\MigrationPage.xaml;;
+FD:\solo\ssh-manage\src\SshManage\Views\PermissionFixPage.xaml;;
+FD:\solo\ssh-manage\src\SshManage\Views\SiteEditDialog.xaml;;
+FD:\solo\ssh-manage\src\SshManage\Views\SiteManagePage.xaml;;
+FD:\solo\ssh-manage\src\SshManage\Views\TemplateManagePage.xaml;;
+

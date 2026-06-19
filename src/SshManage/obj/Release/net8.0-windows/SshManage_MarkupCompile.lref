@@ -1,11 +1,16 @@
-﻿D:\solo\ssh-manage\src\SshManage\obj\Release\net8.0-windows\GeneratedInternalTypeHelper.g.cs
-FD:\solo\ssh-manage\src\SshManage\App.xaml;;
-FD:\solo\ssh-manage\src\SshManage\MainWindow.xaml;;
-FD:\solo\ssh-manage\src\SshManage\Views\ConfigEditorPage.xaml;;
-FD:\solo\ssh-manage\src\SshManage\Views\ConnectionTestPage.xaml;;
-FD:\solo\ssh-manage\src\SshManage\Views\GenerateKeyDialog.xaml;;
-FD:\solo\ssh-manage\src\SshManage\Views\KeyManagePage.xaml;;
-FD:\solo\ssh-manage\src\SshManage\Views\PermissionFixPage.xaml;;
-FD:\solo\ssh-manage\src\SshManage\Views\SiteEditDialog.xaml;;
-FD:\solo\ssh-manage\src\SshManage\Views\SiteManagePage.xaml;;
+﻿d:\solo\ssh-manage\src\SshManage\obj\Release\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+Fd:\solo\ssh-manage\src\SshManage\App.xaml;;
+Fd:\solo\ssh-manage\src\SshManage\MainWindow.xaml;;
+Fd:\solo\ssh-manage\src\SshManage\Views\AgentManagePage.xaml;;
+Fd:\solo\ssh-manage\src\SshManage\Views\BackupManagePage.xaml;;
+Fd:\solo\ssh-manage\src\SshManage\Views\ConfigEditorPage.xaml;;
+Fd:\solo\ssh-manage\src\SshManage\Views\ConnectionTestPage.xaml;;
+Fd:\solo\ssh-manage\src\SshManage\Views\GenerateKeyDialog.xaml;;
+Fd:\solo\ssh-manage\src\SshManage\Views\GitHubFixPage.xaml;;
+Fd:\solo\ssh-manage\src\SshManage\Views\KeyManagePage.xaml;;
+Fd:\solo\ssh-manage\src\SshManage\Views\MigrationPage.xaml;;
+Fd:\solo\ssh-manage\src\SshManage\Views\PermissionFixPage.xaml;;
+Fd:\solo\ssh-manage\src\SshManage\Views\SiteEditDialog.xaml;;
+Fd:\solo\ssh-manage\src\SshManage\Views\SiteManagePage.xaml;;
+Fd:\solo\ssh-manage\src\SshManage\Views\TemplateManagePage.xaml;;
 

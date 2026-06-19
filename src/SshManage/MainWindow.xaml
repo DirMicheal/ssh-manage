@@ -25,7 +25,7 @@
                         </Border>
                         <StackPanel VerticalAlignment="Center">
                             <TextBlock Text="SSH管理器" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}" />
-                            <TextBlock Text="v1.0.0" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}" />
+                            <TextBlock Text="v2.0.0" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}" />
                         </StackPanel>
                     </StackPanel>
                 </Border>
@@ -47,6 +47,12 @@
                             <TextBlock Text="密钥管理" VerticalAlignment="Center" />
                         </StackPanel>
                     </ListBoxItem>
+                    <ListBoxItem Style="{StaticResource SidebarItemStyle}" Tag="AgentManage">
+                        <StackPanel Orientation="Horizontal" helpers:StackPanelHelper.Spacing="10">
+                            <TextBlock Text="🛡️" FontSize="18" />
+                            <TextBlock Text="代理管控" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </ListBoxItem>
                     <ListBoxItem Style="{StaticResource SidebarItemStyle}" Tag="PermissionFix">
                         <StackPanel Orientation="Horizontal" helpers:StackPanelHelper.Spacing="10">
                             <TextBlock Text="🔧" FontSize="18" />
@@ -57,6 +63,30 @@
                         <StackPanel Orientation="Horizontal" helpers:StackPanelHelper.Spacing="10">
                             <TextBlock Text="📶" FontSize="18" />
                             <TextBlock Text="连通性检测" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Style="{StaticResource SidebarItemStyle}" Tag="TemplateManage">
+                        <StackPanel Orientation="Horizontal" helpers:StackPanelHelper.Spacing="10">
+                            <TextBlock Text="📋" FontSize="18" />
+                            <TextBlock Text="站点模板" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Style="{StaticResource SidebarItemStyle}" Tag="BackupManage">
+                        <StackPanel Orientation="Horizontal" helpers:StackPanelHelper.Spacing="10">
+                            <TextBlock Text="💿" FontSize="18" />
+                            <TextBlock Text="配置备份" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Style="{StaticResource SidebarItemStyle}" Tag="Migration">
+                        <StackPanel Orientation="Horizontal" helpers:StackPanelHelper.Spacing="10">
+                            <TextBlock Text="📦" FontSize="18" />
+                            <TextBlock Text="配置迁移" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Style="{StaticResource SidebarItemStyle}" Tag="GitHubFix">
+                        <StackPanel Orientation="Horizontal" helpers:StackPanelHelper.Spacing="10">
+                            <TextBlock Text="🐙" FontSize="18" />
+                            <TextBlock Text="GitHub修复" VerticalAlignment="Center" />
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem Style="{StaticResource SidebarItemStyle}" Tag="ConfigEditor">

@@ -1,5 +1,4 @@
 using CommunityToolkit.Mvvm.ComponentModel;
-using System.Collections.ObjectModel;
 
 namespace SshManage.Models;
 
@@ -27,7 +26,35 @@ public partial class SshSite : ObservableObject
     private string? _remark;
 
     [ObservableProperty]
+    private string? _proxyCommand;
+
+    [ObservableProperty]
+    private bool _forwardAgent;
+
+    [ObservableProperty]
+    private string? _proxyJump;
+
+    [ObservableProperty]
+    private int _serverAliveInterval;
+
+    [ObservableProperty]
+    private int _serverAliveCountMax = 3;
+
+    [ObservableProperty]
+    private bool _compression;
+
+    [ObservableProperty]
     private bool _isExpanded;
 
     public Dictionary<string, string> AdditionalOptions { get; set; } = new();
+
+    public string DisplayName
+    {
+        get
+        {
+            if (!string.IsNullOrWhiteSpace(Remark))
+                return $"{Host} ({Remark})";
+            return Host;
+        }
+    }
 }

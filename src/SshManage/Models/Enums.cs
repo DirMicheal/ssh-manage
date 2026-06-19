@@ -24,5 +24,23 @@ public enum ModuleType
     PermissionFix,
     ConnectionTest,
     ConfigEditor,
-    About
+    TemplateManage,
+    BackupManage,
+    Migration,
+    AgentManage,
+    GitHubFix
+}
+
+public enum BackupType
+{
+    Manual,
+    AutoBeforeSave,
+    AutoBeforeDelete
+}
+
+public enum MigrationFormat
+{
+    NativeJson,
+    OpensshConfig,
+    PuttySession
 }

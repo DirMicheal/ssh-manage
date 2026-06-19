@@ -8,7 +8,7 @@
     <UseWPF>true</UseWPF>
     <AssemblyName>SshManage</AssemblyName>
     <RootNamespace>SshManage</RootNamespace>
-    <Version>1.0.0</Version>
+    <Version>2.0.0</Version>
     <Authors>SshManage Team</Authors>
     <Product>SSH配置管理器</Product>
     <Description>Windows SSH配置管理器 - 可视化管理SSH站点与私钥</Description>

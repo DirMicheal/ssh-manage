@@ -44,6 +44,13 @@
                           SelectionChanged="KeyListView_SelectionChanged">
                     <ListView.View>
                         <GridView>
+                            <GridViewColumn Header="状态" Width="50">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding StatusIcon}" FontSize="14" HorizontalAlignment="Center" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                             <GridViewColumn Header="名称" DisplayMemberBinding="{Binding Name}" Width="150" />
                             <GridViewColumn Header="类型" DisplayMemberBinding="{Binding Type}" Width="80" />
                             <GridViewColumn Header="私钥" Width="60">
@@ -61,7 +68,7 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
                             <GridViewColumn Header="权限状态" DisplayMemberBinding="{Binding PermissionStatus}" Width="100" />
-                            <GridViewColumn Header="私钥路径" DisplayMemberBinding="{Binding PrivateKeyPath}" Width="300" />
+                            <GridViewColumn Header="指纹" DisplayMemberBinding="{Binding Fingerprint}" Width="250" />
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -70,14 +77,24 @@
 
         <Border Grid.Row="3" Style="{StaticResource CardStyle}" Margin="0,16,0,0">
             <StackPanel helpers:StackPanelHelper.Spacing="8">
-                <TextBlock Text="📝 公钥内容预览" FontWeight="SemiBold" FontSize="14" />
-                <TextBox x:Name="PublicKeyPreviewTextBox" 
-                         Height="100" 
-                         TextWrapping="Wrap" 
-                         IsReadOnly="True" 
-                         VerticalScrollBarVisibility="Auto"
-                         FontFamily="Consolas"
-                         FontSize="12" />
+                <StackPanel Orientation="Horizontal" helpers:StackPanelHelper.Spacing="12">
+                    <TextBlock Text="📝 密钥详情" FontWeight="SemiBold" FontSize="14" />
+                    <TextBlock x:Name="MichealKeyBadge" Text="⭐ Micheal私钥" FontSize="12" FontWeight="SemiBold" Foreground="#B7791F" Visibility="Collapsed" VerticalAlignment="Center" />
+                </StackPanel>
+                <DockPanel>
+                    <TextBlock Text="私钥路径:" Width="80" VerticalAlignment="Center" Foreground="{StaticResource TextSecondaryBrush}" />
+                    <TextBox x:Name="PrivateKeyPathTextBox" IsReadOnly="True" FontFamily="Consolas" FontSize="12" />
+                </DockPanel>
+                <DockPanel>
+                    <TextBlock Text="公钥内容:" Width="80" VerticalAlignment="Top" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,6,0,0" />
+                    <TextBox x:Name="PublicKeyPreviewTextBox" 
+                             Height="80" 
+                             TextWrapping="Wrap" 
+                             IsReadOnly="True" 
+                             VerticalScrollBarVisibility="Auto"
+                             FontFamily="Consolas"
+                             FontSize="12" />
+                </DockPanel>
             </StackPanel>
         </Border>
     </Grid>

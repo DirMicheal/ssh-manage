@@ -39,10 +39,14 @@ public partial class KeyManagePage : Page
         if (KeyListView.SelectedItem is SshKey selectedKey)
         {
             PublicKeyPreviewTextBox.Text = selectedKey.PublicKeyContent;
+            PrivateKeyPathTextBox.Text = selectedKey.PrivateKeyPath;
+            MichealKeyBadge.Visibility = selectedKey.IsMichealKey ? Visibility.Visible : Visibility.Collapsed;
         }
         else
         {
             PublicKeyPreviewTextBox.Text = string.Empty;
+            PrivateKeyPathTextBox.Text = string.Empty;
+            MichealKeyBadge.Visibility = Visibility.Collapsed;
         }
     }
 
@@ -119,24 +123,35 @@ public partial class KeyManagePage : Page
         if (KeyListView.SelectedItem is not SshKey selectedKey)
             return;
 
+        var keyLabel = selectedKey.IsMichealKey ? $"⭐ Micheal私钥 \"{selectedKey.Name}\"" : $"密钥 \"{selectedKey.Name}\"";
+
         var result = MessageBox.Show(
-            $"确定要删除密钥 \"{selectedKey.Name}\" 吗？\n此操作不可恢复！",
+            $"确定要删除{keyLabel}吗？\n\n此操作将永久删除私钥和公钥文件，不可恢复！\n\n是否继续？",
             "确认删除",
             MessageBoxButton.YesNo,
             MessageBoxImage.Warning);
 
-        if (result == MessageBoxResult.Yes)
+        if (result != MessageBoxResult.Yes)
+            return;
+
+        var confirmResult = MessageBox.Show(
+            $"二次确认：即将永久删除{keyLabel}，是否确认？\n\n删除后使用该密钥的站点将无法连接！",
+            "二次确认删除",
+            MessageBoxButton.YesNo,
+            MessageBoxImage.Warning);
+
+        if (confirmResult != MessageBoxResult.Yes)
+            return;
+
+        var success = _keyService.DeleteKey(selectedKey.Name);
+        if (success)
         {
-            var success = _keyService.DeleteKey(selectedKey.Name);
-            if (success)
-            {
-                LoadKeys();
-                MessageBox.Show("密钥已删除", "成功", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            else
-            {
-                MessageBox.Show("删除失败", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            LoadKeys();
+            MessageBox.Show("密钥已删除", "成功", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+        else
+        {
+            MessageBox.Show("删除失败", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 

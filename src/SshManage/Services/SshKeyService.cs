@@ -14,6 +14,7 @@ namespace SshManage.Services;
 public class SshKeyService
 {
     private readonly string _sshDirectory;
+    private const string MICHEAL_KEY_IDENTIFIER = "micheal";
 
     public string SshDirectory => _sshDirectory;
 
@@ -71,12 +72,13 @@ public class SshKeyService
 
             key.HasPermissionIssue = CheckPermissionIssue(key.PrivateKeyPath);
             key.PermissionStatus = key.HasPermissionIssue ? "权限异常" : "权限正常";
+            key.IsMichealKey = DetectMichealKey(key);
 
             if (key.HasPublicKey)
             {
                 try
                 {
-                    key.PublicKeyContent = File.ReadAllText(key.PublicKeyPath).Trim();
+                    key.PublicKeyContent = File.ReadAllText(key.PublicKeyPath, new UTF8Encoding(false)).Trim();
                 }
                 catch
                 {
@@ -84,10 +86,71 @@ public class SshKeyService
                 }
             }
 
+            key.Fingerprint = GetKeyFingerprint(key);
+
             keys.Add(key);
         }
 
         return keys;
+    }
+
+    private bool DetectMichealKey(SshKey key)
+    {
+        if (!key.HasPrivateKey)
+            return false;
+
+        var nameLower = key.Name.ToLowerInvariant();
+        if (nameLower.Contains(MICHEAL_KEY_IDENTIFIER))
+            return true;
+
+        if (key.HasPublicKey)
+        {
+            try
+            {
+                var content = key.PublicKeyContent.ToLowerInvariant();
+                if (content.Contains(MICHEAL_KEY_IDENTIFIER))
+                    return true;
+            }
+            catch { }
+        }
+
+        if (!string.IsNullOrEmpty(key.Comment) && key.Comment.ToLowerInvariant().Contains(MICHEAL_KEY_IDENTIFIER))
+            return true;
+
+        return false;
+    }
+
+    private string? GetKeyFingerprint(SshKey key)
+    {
+        if (!key.HasPublicKey)
+            return null;
+
+        try
+        {
+            var startInfo = new ProcessStartInfo
+            {
+                FileName = "ssh-keygen",
+                Arguments = $"-l -f \"{key.PublicKeyPath}\"",
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true
+            };
+
+            using var process = Process.Start(startInfo);
+            if (process == null) return null;
+
+            var output = process.StandardOutput.ReadToEnd();
+            process.WaitForExit(5000);
+
+            if (process.ExitCode == 0 && !string.IsNullOrEmpty(output))
+            {
+                return output.Trim();
+            }
+        }
+        catch { }
+
+        return null;
     }
 
     private bool IsPrivateKey(string filePath)
@@ -110,7 +173,7 @@ public class SshKeyService
 
         try
         {
-            var content = File.ReadAllText(privateKeyPath);
+            var content = File.ReadAllText(privateKeyPath, new UTF8Encoding(false));
             if (content.Contains("BEGIN RSA PRIVATE KEY") || content.Contains("RSA PRIVATE KEY"))
                 return "RSA";
             if (content.Contains("BEGIN EC PRIVATE KEY") || content.Contains("ECDSA"))
@@ -298,7 +361,7 @@ public class SshKeyService
 
         try
         {
-            return File.ReadAllText(publicKeyPath).Trim();
+            return File.ReadAllText(publicKeyPath, new UTF8Encoding(false)).Trim();
         }
         catch
         {
@@ -393,5 +456,149 @@ public class SshKeyService
         }
 
         return renamed;
+    }
+
+    public List<SshKey> GetAgentKeys()
+    {
+        try
+        {
+            var startInfo = new ProcessStartInfo
+            {
+                FileName = "ssh-add",
+                Arguments = "-l",
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true
+            };
+
+            using var process = Process.Start(startInfo);
+            if (process == null) return new List<SshKey>();
+
+            var output = process.StandardOutput.ReadToEnd();
+            process.WaitForExit(5000);
+
+            if (process.ExitCode != 0)
+                return new List<SshKey>();
+
+            var agentKeys = new List<SshKey>();
+            foreach (var line in output.Split('\n', StringSplitOptions.RemoveEmptyEntries))
+            {
+                var parts = line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                if (parts.Length >= 2)
+                {
+                    var type = parts[0];
+                    var fingerprint = parts[1];
+
+                    string keyName = "agent-key";
+                    if (parts.Length >= 4)
+                    {
+                        var lastPart = parts[^1];
+                        if (lastPart.Contains('(') && lastPart.Contains(')'))
+                        {
+                            var start = lastPart.IndexOf('(') + 1;
+                            var end = lastPart.IndexOf(')');
+                            if (start < end)
+                                keyName = lastPart.Substring(start, end - start);
+                        }
+                    }
+
+                    agentKeys.Add(new SshKey
+                    {
+                        Name = keyName,
+                        Type = type,
+                        Fingerprint = fingerprint,
+                        Comment = "Agent中的密钥"
+                    });
+                }
+            }
+
+            return agentKeys;
+        }
+        catch
+        {
+            return new List<SshKey>();
+        }
+    }
+
+    public bool AddKeyToAgent(string privateKeyPath)
+    {
+        if (!File.Exists(privateKeyPath))
+            return false;
+
+        try
+        {
+            var startInfo = new ProcessStartInfo
+            {
+                FileName = "ssh-add",
+                Arguments = $"\"{privateKeyPath}\"",
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true
+            };
+
+            using var process = Process.Start(startInfo);
+            if (process == null) return false;
+
+            process.WaitForExit(10000);
+            return process.ExitCode == 0;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public bool RemoveKeyFromAgent(string privateKeyPath)
+    {
+        try
+        {
+            var startInfo = new ProcessStartInfo
+            {
+                FileName = "ssh-add",
+                Arguments = $"-d \"{privateKeyPath}\"",
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true
+            };
+
+            using var process = Process.Start(startInfo);
+            if (process == null) return false;
+
+            process.WaitForExit(10000);
+            return process.ExitCode == 0;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public bool ClearAgent()
+    {
+        try
+        {
+            var startInfo = new ProcessStartInfo
+            {
+                FileName = "ssh-add",
+                Arguments = "-D",
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true
+            };
+
+            using var process = Process.Start(startInfo);
+            if (process == null) return false;
+
+            process.WaitForExit(10000);
+            return process.ExitCode == 0;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }

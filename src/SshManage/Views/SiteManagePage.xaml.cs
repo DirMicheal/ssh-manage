@@ -130,18 +130,31 @@ public partial class SiteManagePage : Page
             return;
 
         var result = MessageBox.Show(
-            $"确定要删除站点 \"{selectedSite.Host}\" 吗？",
+            $"确定要删除站点 \"{selectedSite.Host}\" 吗？\n\n此操作将修改SSH配置文件，删除后可通过备份恢复。\n\n是否继续？",
             "确认删除",
             MessageBoxButton.YesNo,
-            MessageBoxImage.Question);
+            MessageBoxImage.Warning);
 
-        if (result == MessageBoxResult.Yes)
-        {
-            _allSites.Remove(selectedSite);
-            _filteredSites.Remove(selectedSite);
-            LoadGroups();
-            SaveConfig();
-        }
+        if (result != MessageBoxResult.Yes)
+            return;
+
+        var confirmResult = MessageBox.Show(
+            $"二次确认：即将删除站点 \"{selectedSite.Host}\"，是否确认？",
+            "二次确认删除",
+            MessageBoxButton.YesNo,
+            MessageBoxImage.Warning);
+
+        if (confirmResult != MessageBoxResult.Yes)
+            return;
+
+        _configService.BackupConfig(BackupType.AutoBeforeDelete, $"删除站点 {selectedSite.Host} 前自动备份");
+
+        _allSites.Remove(selectedSite);
+        _filteredSites.Remove(selectedSite);
+        LoadGroups();
+        SaveConfig();
+
+        _configService.CleanupOldBackups();
     }
 
     private void BtnRefresh_Click(object sender, RoutedEventArgs e)
@@ -159,8 +172,9 @@ public partial class SiteManagePage : Page
     {
         try
         {
-            _configService.BackupConfig();
+            _configService.BackupConfig(BackupType.AutoBeforeSave, "保存配置前自动备份");
             _configService.SaveSites(_allSites);
+            _configService.CleanupOldBackups();
         }
         catch (Exception ex)
         {

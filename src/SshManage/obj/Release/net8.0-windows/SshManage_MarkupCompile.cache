@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\solo\ssh-manage\src\SshManage\obj\Release\net8.0-windows\
+d:\solo\ssh-manage\src\SshManage\obj\Release\net8.0-windows\
 SshManage
 none
 false
 TRACE;RELEASE;NET;NET8_0;NETCOREAPP
-D:\solo\ssh-manage\src\SshManage\App.xaml
-10-1652832914
+d:\solo\ssh-manage\src\SshManage\App.xaml
+15-1466640789
 
-20-1525719910
+302035259387
 199-409410839
-MainWindow.xaml;Styles\Colors.xaml;Styles\Controls.xaml;Views\ConfigEditorPage.xaml;Views\ConnectionTestPage.xaml;Views\GenerateKeyDialog.xaml;Views\KeyManagePage.xaml;Views\PermissionFixPage.xaml;Views\SiteEditDialog.xaml;Views\SiteManagePage.xaml;
+MainWindow.xaml;Styles\Colors.xaml;Styles\Controls.xaml;Views\AgentManagePage.xaml;Views\BackupManagePage.xaml;Views\ConfigEditorPage.xaml;Views\ConnectionTestPage.xaml;Views\GenerateKeyDialog.xaml;Views\GitHubFixPage.xaml;Views\KeyManagePage.xaml;Views\MigrationPage.xaml;Views\PermissionFixPage.xaml;Views\SiteEditDialog.xaml;Views\SiteManagePage.xaml;Views\TemplateManagePage.xaml;
 
 False
 

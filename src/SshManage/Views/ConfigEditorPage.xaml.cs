@@ -1,3 +1,4 @@
+using SshManage.Models;
 using SshManage.Services;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -68,7 +69,7 @@ public partial class ConfigEditorPage : Page
 
         try
         {
-            _configService.BackupConfig();
+            _configService.BackupConfig(BackupType.AutoBeforeSave, "配置编辑器保存前自动备份");
             _configService.SaveRawConfig(ConfigTextBox.Text);
             _originalContent = ConfigTextBox.Text;
             _isModified = false;
@@ -85,7 +86,7 @@ public partial class ConfigEditorPage : Page
     {
         try
         {
-            _configService.BackupConfig();
+            _configService.BackupConfig(BackupType.Manual, "手动创建备份");
             UpdateStatus("备份已创建");
             MessageBox.Show("备份创建成功！", "成功", MessageBoxButton.OK, MessageBoxImage.Information);
         }

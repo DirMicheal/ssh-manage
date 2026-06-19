@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KyDeuBFxLVY=",
+  "dgSpecHash": "YGjS5CI48FQ=",
   "success": true,
-  "projectFilePath": "D:\\solo\\ssh-manage\\src\\SshManage\\SshManage.csproj",
+  "projectFilePath": "d:\\solo\\ssh-manage\\src\\SshManage\\SshManage.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.2\\communitytoolkit.mvvm.8.2.2.nupkg.sha512"
   ],
